@@ -1,4 +1,4 @@
-import { sum, multiplication, totalChars, sumDigits } from './task';
+import { sum, multiplication, totalChars, sumDigits, maxValue } from './task';
 
 describe('testing function sum', () => {
   it('adding numbers', () => {
@@ -56,5 +56,17 @@ describe('testing function sumDigits', () => {
     expect(consoleLogMock).toHaveBeenCalledWith(
       'Сумма цифр введенного числа 1 равна: 1',
     );
+  });
+});
+
+describe('testing function maxValue', () => {
+  it('of 10 and 5 returns 10', () => {
+    jest.spyOn(console, 'log');
+    maxValue(10, 5);
+    expect(console.log).toBeCalledWith(10);
+    maxValue(2, 2);
+    expect(console.log).toBeCalledWith(2);
+    maxValue(-5, 5);
+    expect(console.log).toBeCalledWith(5);
   });
 });
