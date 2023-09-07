@@ -31,3 +31,21 @@ export function multiplication(a, b) {
 export function totalChars(str1, str2) {
   console.log(`Суммарное количество символов: ${str1.length + str2.length}`);
 }
+
+/**
+ * The sum of the digits of the number
+ * @function
+ */
+
+export function sumDigits() {
+  let num = prompt('Введите трехзначное число: ');
+
+  num = Number(num);
+  const digit3 = num % 10;
+  const digit1 = (num - (num % 100)) / 100;
+  const digit2 = (num - digit1 * 100 - digit3) / 10;
+
+  console.log(
+    `Сумма цифр введенного числа ${num} равна: ${digit1 + digit2 + digit3}`,
+  );
+}

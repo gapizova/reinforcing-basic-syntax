@@ -1,4 +1,4 @@
-import { sum, multiplication, totalChars } from './task';
+import { sum, multiplication, totalChars, sumDigits } from './task';
 
 describe('testing function sum', () => {
   it('adding numbers', () => {
@@ -35,5 +35,26 @@ describe('testing function totalChars', () => {
     expect(console.log).toBeCalledWith('Суммарное количество символов: 6');
     totalChars('', '');
     expect(console.log).toBeCalledWith('Суммарное количество символов: 0');
+  });
+});
+
+describe('testing function sumDigits', () => {
+  it('outputs the sum of the digits of the number', () => {
+    jest.spyOn(window, 'prompt').mockReturnValueOnce('357');
+    const consoleLogMock = jest.spyOn(console, 'log').mockImplementation();
+    sumDigits();
+    expect(consoleLogMock).toHaveBeenCalledWith(
+      'Сумма цифр введенного числа 357 равна: 15',
+    );
+    jest.spyOn(window, 'prompt').mockReturnValueOnce('123');
+    sumDigits();
+    expect(consoleLogMock).toHaveBeenCalledWith(
+      'Сумма цифр введенного числа 123 равна: 6',
+    );
+    jest.spyOn(window, 'prompt').mockReturnValueOnce('001');
+    sumDigits();
+    expect(consoleLogMock).toHaveBeenCalledWith(
+      'Сумма цифр введенного числа 1 равна: 1',
+    );
   });
 });
