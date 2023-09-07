@@ -1,4 +1,11 @@
-import { sum, multiplication, totalChars, sumDigits, maxValue } from './task';
+import {
+  sum,
+  multiplication,
+  totalChars,
+  sumDigits,
+  maxValue,
+  nameMonth,
+} from './task';
 
 describe('testing function sum', () => {
   it('adding numbers', () => {
@@ -60,7 +67,7 @@ describe('testing function sumDigits', () => {
 });
 
 describe('testing function maxValue', () => {
-  it('of 10 and 5 returns 10', () => {
+  it('returns the maximum of two numbers', () => {
     jest.spyOn(console, 'log');
     maxValue(10, 5);
     expect(console.log).toBeCalledWith(10);
@@ -68,5 +75,21 @@ describe('testing function maxValue', () => {
     expect(console.log).toBeCalledWith(2);
     maxValue(-5, 5);
     expect(console.log).toBeCalledWith(5);
+  });
+});
+
+describe('testing function nameMonth', () => {
+  it('returns name of the month', () => {
+    const consoleLogMock = jest.spyOn(console, 'log').mockImplementation();
+
+    jest.spyOn(window, 'prompt').mockReturnValueOnce('2');
+    nameMonth();
+    expect(consoleLogMock).toHaveBeenCalledWith('Февраль');
+    jest.spyOn(window, 'prompt').mockReturnValueOnce('12');
+    nameMonth();
+    expect(consoleLogMock).toHaveBeenCalledWith('Декабрь');
+    jest.spyOn(window, 'prompt').mockReturnValueOnce('6');
+    nameMonth();
+    expect(consoleLogMock).toHaveBeenCalledWith('Июнь');
   });
 });

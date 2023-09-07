@@ -13,6 +13,7 @@
  * @function
  * @param {number} a
  * @param {number} b
+ * @returns {void}
  */
 export function sum(a, b) {
   console.log(`Сумма ${a} и ${b}: ${a + b}`);
@@ -26,6 +27,7 @@ export function multiplication(a, b) {
  * @function
  * @param {string} str1
  * @param {string} str2
+ * @returns {void}
  */
 
 export function totalChars(str1, str2) {
@@ -35,6 +37,7 @@ export function totalChars(str1, str2) {
 /**
  * The sum of the digits of the number
  * @function
+ * @returns {void}
  */
 
 export function sumDigits() {
@@ -62,8 +65,9 @@ export function sumDigits() {
 /**
  * The largest of the two numbers
  * @function
- * @param {number} a
- * @param {number} b
+ * @param {number} a - the first number
+ * @param {number} b - the second number
+ * @returns {void}
  */
 
 export function maxValue(a, b) {
@@ -71,5 +75,56 @@ export function maxValue(a, b) {
     console.log(a);
   } else {
     console.log(b);
+  }
+}
+
+/**
+ * Print the name of the month
+ * @function
+ * @returns {void}
+ */
+
+export function nameMonth() {
+  let num = prompt('Введите число от 1 до 12: ');
+
+  num = Number(num);
+
+  switch (num) {
+    case 1:
+      console.log('Январь');
+      break;
+    case 2:
+      console.log('Февраль');
+      break;
+    case 3:
+      console.log('Март');
+      break;
+    case 4:
+      console.log('Апрель');
+      break;
+    case 5:
+      console.log('Май');
+      break;
+    case 6:
+      console.log('Июнь');
+      break;
+    case 7:
+      console.log('Июль');
+      break;
+    case 8:
+      console.log('Август');
+      break;
+    case 9:
+      console.log('Сентябрь');
+      break;
+    case 10:
+      console.log('Октябрь');
+      break;
+    case 11:
+      console.log('Ноябрь');
+      break;
+    case 12:
+      console.log('Декабрь');
+      break;
   }
 }
