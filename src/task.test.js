@@ -9,6 +9,9 @@ import {
   sumNumbers,
   mulTableSeven,
   arithmeticMeanOdd,
+  setAge,
+  newUserAdmin,
+  destructObj,
 } from './task';
 
 describe('testing function sum', () => {
@@ -159,5 +162,28 @@ describe('testing function arithmeticMeanOdd', () => {
     expect(consoleSpy).toBeCalledWith(
       'Среднее арифметическое всех нечётных чисел от 1 до -20: NaN',
     );
+  });
+
+  describe('testing object mutation', () => {
+    let user;
+    beforeEach(() => {
+      user = { name: 'John' };
+    });
+    it('should add the age field to the object', () => {
+      jest.spyOn(window, 'prompt').mockReturnValueOnce('25');
+      setAge(user);
+      expect(user.age).toBe(25);
+    });
+
+    it('should create a copy of the object with the role field', () => {
+      const admin = newUserAdmin(user);
+      expect(admin.name).toBe('John');
+      expect(admin.role).toBe('admin');
+    });
+
+    it('should destructuring an object', () => {
+      const result = destructObj(user);
+      expect(result.name).toEqual('John');
+    });
   });
 });

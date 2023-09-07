@@ -36,5 +36,6 @@ module.exports = {
     'no-unused-expressions': 'off',
     'no-plusplus': 'off',
     'no-shadow': 'off',
+    'no-param-reassign': 'off',
   },
 };

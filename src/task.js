@@ -18,6 +18,7 @@
 export function sum(a, b) {
   console.log(`Сумма ${a} и ${b}: ${a + b}`);
 }
+
 export function multiplication(a, b) {
   console.log(`Произведение ${a} и ${b}: ${a * b}`);
 }
@@ -209,4 +210,56 @@ export function arithmeticMeanOdd() {
       sumOdd / oddCount
     }`,
   );
+}
+
+/* Создайте объект user, содержащий поле name со
+значением ‘John’.
+1. Запросить у пользователя ввод числа. Записать
+введенное значение в поле age объекта user.
+2. Создать копию объекта user с именем admin.
+Добавить новому объекту поле role со значением
+‘admin’.
+3. *Записать все значения полей объекта admin в
+отдельные переменные. Имена переменных
+должны совпадать с названиями полей. */
+
+/* let user = {
+	name: 'John'
+} */
+
+/**
+ * Add the age field to the object
+ * @param obj {Object}
+ * @returns {void}
+ */
+export function setAge(obj) {
+  let valueAge = prompt('Введите возраст: ');
+  valueAge = Number(valueAge);
+  obj.age = valueAge;
+}
+
+/**
+ * Create a copy of the object with the role field
+ * @param obj {Object}
+ * @returns {Object}
+ */
+export function newUserAdmin(obj) {
+  return { ...obj, role: 'admin'};
+}
+
+/**
+ * Destructuring an object
+ * @param {Object} obj - Source object
+ * @returns {Object}
+ *
+ * @example
+ * const myObject = { name: 'John', age: 25, role: 'admin' };
+ * const { name, age, role } = destructureObject(myObject);
+ * console.log(name); // 'John'
+ * console.log(age); // 25
+ * console.log(role); // 'admin'
+ */
+export function destructObj(obj) {
+  const { ...variables } = obj;
+  return variables;
 }
