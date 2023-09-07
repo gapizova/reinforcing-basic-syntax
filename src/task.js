@@ -147,3 +147,30 @@ export function inscribedCircle(circle, square) {
     console.log('Круг не поместится в квадрат');
   }
 }
+
+/* 1. Вывести в консоль сумму всех целых чисел от 50 до
+100.
+2. Вывести в консоль таблицу умножения на 7.
+7 x 1 = 7
+7 x 2 = 14
+…
+7 x 9 = 63
+3. *Запросить у пользователя ввод числа N. Вывести в
+консоль среднее арифметическое всех нечётных
+чисел от 1 до N. */
+
+/**
+ * The sum of all integers from 50 to 100
+ * @function
+ * @returns {void}
+ */
+
+export function sumNumbers() {
+  let add = 0;
+
+  for (let i = 50; i <= 100; i++) {
+    add += i;
+  }
+
+  console.log(`Сумма чисел от 50 до 100: ${add}`);
+}

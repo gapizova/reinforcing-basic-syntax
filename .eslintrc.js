@@ -34,5 +34,7 @@ module.exports = {
     'no-alert': 'off',
     'default-case': 'off',
     'no-unused-expressions': 'off',
+    'no-plusplus': 'off',
+    'no-shadow': 'off',
   },
 };

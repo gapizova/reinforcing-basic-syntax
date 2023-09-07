@@ -6,6 +6,7 @@ import {
   maxValue,
   nameMonth,
   inscribedCircle,
+  sumNumbers,
 } from './task';
 
 describe('testing function sum', () => {
@@ -104,5 +105,13 @@ describe('testing function inscribedCircle', () => {
     expect(console.log).toBeCalledWith('Круг не поместится в квадрат');
     inscribedCircle(25, 21);
     expect(console.log).toBeCalledWith('Круг не поместится в квадрат');
+  });
+});
+
+describe('testing function sumNumbers', () => {
+  it('print is the sum of all integers from 50 to 100', () => {
+    jest.spyOn(console, 'log');
+    sumNumbers();
+    expect(console.log).toBeCalledWith('Сумма чисел от 50 до 100: 3825');
   });
 });
