@@ -8,6 +8,7 @@ import {
   inscribedCircle,
   sumNumbers,
   mulTableSeven,
+  arithmeticMeanOdd,
 } from './task';
 
 describe('testing function sum', () => {
@@ -136,5 +137,27 @@ describe('testing function mulTableSeven', () => {
     expect(consoleSpy.mock.calls[8][0]).toBe('7 x 9 = 63');
 
     consoleSpy.mockRestore();
+  });
+});
+
+describe('testing function arithmeticMeanOdd', () => {
+  it('should print is the arithmetic mean of odd numbers', () => {
+    const consoleSpy = jest.spyOn(console, 'log');
+
+    jest.spyOn(window, 'prompt').mockReturnValueOnce('10');
+    arithmeticMeanOdd();
+    expect(consoleSpy).toBeCalledWith(
+      'Среднее арифметическое всех нечётных чисел от 1 до 10: 5',
+    );
+    jest.spyOn(window, 'prompt').mockReturnValueOnce('100');
+    arithmeticMeanOdd();
+    expect(consoleSpy).toBeCalledWith(
+      'Среднее арифметическое всех нечётных чисел от 1 до 100: 50',
+    );
+    jest.spyOn(window, 'prompt').mockReturnValueOnce('-20');
+    arithmeticMeanOdd();
+    expect(consoleSpy).toBeCalledWith(
+      'Среднее арифметическое всех нечётных чисел от 1 до -20: NaN',
+    );
   });
 });

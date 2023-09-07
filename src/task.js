@@ -186,3 +186,27 @@ export function mulTableSeven() {
     console.log(`7 x ${i} = ${7 * i}`);
   }
 }
+
+/**
+ * Arithmetic mean of all odd numbers from 1 to N
+ * @function
+ * @returns {void}
+ */
+
+export function arithmeticMeanOdd() {
+  let n = prompt('Введите число: ');
+  n = Number(n);
+  let sumOdd = 0;
+  let oddCount = 0;
+
+  for (let i = 1; i <= n; i += 2) {
+    sumOdd += i;
+    oddCount++;
+  }
+
+  console.log(
+    `Среднее арифметическое всех нечётных чисел от 1 до ${n}: ${
+      sumOdd / oddCount
+    }`,
+  );
+}
