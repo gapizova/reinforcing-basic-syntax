@@ -1,4 +1,4 @@
-import { sum, multiplication } from './task';
+import { sum, multiplication, totalChars } from './task';
 
 describe('testing function sum', () => {
   it('adding numbers', () => {
@@ -21,5 +21,19 @@ describe('testing function multiplication', () => {
     expect(console.log).toBeCalledWith('Произведение 0 и 1000: 0');
     multiplication(-100, 25);
     expect(console.log).toBeCalledWith('Произведение -100 и 25: -2500');
+  });
+});
+
+describe('testing function totalChars', () => {
+  it('total number of characters', () => {
+    jest.spyOn(console, 'log');
+    totalChars('aaa', 'bb');
+    expect(console.log).toBeCalledWith('Суммарное количество символов: 5');
+    totalChars('java', 'script');
+    expect(console.log).toBeCalledWith('Суммарное количество символов: 10');
+    totalChars('hello', '!');
+    expect(console.log).toBeCalledWith('Суммарное количество символов: 6');
+    totalChars('', '');
+    expect(console.log).toBeCalledWith('Суммарное количество символов: 0');
   });
 });

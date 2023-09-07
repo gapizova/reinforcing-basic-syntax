@@ -20,3 +20,14 @@ export function sum(a, b) {
 export function multiplication(a, b) {
   console.log(`Произведение ${a} и ${b}: ${a * b}`);
 }
+
+/**
+ * Total number of characters
+ * @function
+ * @param {string} str1
+ * @param {string} str2
+ */
+
+export function totalChars(str1, str2) {
+  console.log(`Суммарное количество символов: ${str1.length + str2.length}`);
+}
