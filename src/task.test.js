@@ -7,10 +7,11 @@ import {
   nameMonth,
   inscribedCircle,
   sumNumbers,
+  mulTableSeven,
 } from './task';
 
 describe('testing function sum', () => {
-  it('adding numbers', () => {
+  it('should adding numbers', () => {
     jest.spyOn(console, 'log');
     sum(5, 2);
     expect(console.log).toBeCalledWith('Сумма 5 и 2: 7');
@@ -22,7 +23,7 @@ describe('testing function sum', () => {
 });
 
 describe('testing function multiplication', () => {
-  it('multiplication of numbers', () => {
+  it('should multiplication of numbers', () => {
     jest.spyOn(console, 'log');
     multiplication(5, 5);
     expect(console.log).toBeCalledWith('Произведение 5 и 5: 25');
@@ -34,7 +35,7 @@ describe('testing function multiplication', () => {
 });
 
 describe('testing function totalChars', () => {
-  it('print total number of characters', () => {
+  it('should print total number of characters', () => {
     jest.spyOn(console, 'log');
     totalChars('aaa', 'bb');
     expect(console.log).toBeCalledWith('Суммарное количество символов: 5');
@@ -48,7 +49,7 @@ describe('testing function totalChars', () => {
 });
 
 describe('testing function sumDigits', () => {
-  it('print the sum of the digits of the number', () => {
+  it('should print the sum of the digits of the number', () => {
     jest.spyOn(window, 'prompt').mockReturnValueOnce('357');
     const consoleLogMock = jest.spyOn(console, 'log').mockImplementation();
     sumDigits();
@@ -69,7 +70,7 @@ describe('testing function sumDigits', () => {
 });
 
 describe('testing function maxValue', () => {
-  it('print the maximum of two numbers', () => {
+  it('should print the maximum of two numbers', () => {
     jest.spyOn(console, 'log');
     maxValue(10, 5);
     expect(console.log).toBeCalledWith(10);
@@ -81,7 +82,7 @@ describe('testing function maxValue', () => {
 });
 
 describe('testing function nameMonth', () => {
-  it('print name of the month', () => {
+  it('should print name of the month', () => {
     const consoleLogMock = jest.spyOn(console, 'log').mockImplementation();
 
     jest.spyOn(window, 'prompt').mockReturnValueOnce('2');
@@ -97,7 +98,7 @@ describe('testing function nameMonth', () => {
 });
 
 describe('testing function inscribedCircle', () => {
-  it('print is the circle inscribed', () => {
+  it('should print is the circle inscribed', () => {
     jest.spyOn(console, 'log');
     inscribedCircle(5, 7);
     expect(console.log).toBeCalledWith('Круг поместится в квадрат');
@@ -109,9 +110,31 @@ describe('testing function inscribedCircle', () => {
 });
 
 describe('testing function sumNumbers', () => {
-  it('print is the sum of all integers from 50 to 100', () => {
+  it('should print is the sum of all integers from 50 to 100', () => {
     jest.spyOn(console, 'log');
     sumNumbers();
     expect(console.log).toBeCalledWith('Сумма чисел от 50 до 100: 3825');
+  });
+});
+
+describe('testing function mulTableSeven', () => {
+  it('should print the multiplication table of 7', () => {
+    const consoleSpy = jest.spyOn(console, 'log');
+
+    mulTableSeven();
+
+    expect(consoleSpy).toHaveBeenCalledTimes(9);
+
+    expect(consoleSpy.mock.calls[0][0]).toBe('7 x 1 = 7');
+    expect(consoleSpy.mock.calls[1][0]).toBe('7 x 2 = 14');
+    expect(consoleSpy.mock.calls[2][0]).toBe('7 x 3 = 21');
+    expect(consoleSpy.mock.calls[3][0]).toBe('7 x 4 = 28');
+    expect(consoleSpy.mock.calls[4][0]).toBe('7 x 5 = 35');
+    expect(consoleSpy.mock.calls[5][0]).toBe('7 x 6 = 42');
+    expect(consoleSpy.mock.calls[6][0]).toBe('7 x 7 = 49');
+    expect(consoleSpy.mock.calls[7][0]).toBe('7 x 8 = 56');
+    expect(consoleSpy.mock.calls[8][0]).toBe('7 x 9 = 63');
+
+    consoleSpy.mockRestore();
   });
 });

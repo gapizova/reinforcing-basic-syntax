@@ -174,3 +174,15 @@ export function sumNumbers() {
 
   console.log(`Сумма чисел от 50 до 100: ${add}`);
 }
+
+/**
+ * Multiplication table by 7
+ * @function
+ * @returns {void}
+ */
+
+export function mulTableSeven() {
+  for (let i = 1; i < 10; i++) {
+    console.log(`7 x ${i} = ${7 * i}`);
+  }
+}
