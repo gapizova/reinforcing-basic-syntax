@@ -5,6 +5,7 @@ import {
   sumDigits,
   maxValue,
   nameMonth,
+  inscribedCircle,
 } from './task';
 
 describe('testing function sum', () => {
@@ -32,7 +33,7 @@ describe('testing function multiplication', () => {
 });
 
 describe('testing function totalChars', () => {
-  it('total number of characters', () => {
+  it('print total number of characters', () => {
     jest.spyOn(console, 'log');
     totalChars('aaa', 'bb');
     expect(console.log).toBeCalledWith('Суммарное количество символов: 5');
@@ -46,7 +47,7 @@ describe('testing function totalChars', () => {
 });
 
 describe('testing function sumDigits', () => {
-  it('outputs the sum of the digits of the number', () => {
+  it('print the sum of the digits of the number', () => {
     jest.spyOn(window, 'prompt').mockReturnValueOnce('357');
     const consoleLogMock = jest.spyOn(console, 'log').mockImplementation();
     sumDigits();
@@ -67,7 +68,7 @@ describe('testing function sumDigits', () => {
 });
 
 describe('testing function maxValue', () => {
-  it('returns the maximum of two numbers', () => {
+  it('print the maximum of two numbers', () => {
     jest.spyOn(console, 'log');
     maxValue(10, 5);
     expect(console.log).toBeCalledWith(10);
@@ -79,7 +80,7 @@ describe('testing function maxValue', () => {
 });
 
 describe('testing function nameMonth', () => {
-  it('returns name of the month', () => {
+  it('print name of the month', () => {
     const consoleLogMock = jest.spyOn(console, 'log').mockImplementation();
 
     jest.spyOn(window, 'prompt').mockReturnValueOnce('2');
@@ -91,5 +92,17 @@ describe('testing function nameMonth', () => {
     jest.spyOn(window, 'prompt').mockReturnValueOnce('6');
     nameMonth();
     expect(consoleLogMock).toHaveBeenCalledWith('Июнь');
+  });
+});
+
+describe('testing function inscribedCircle', () => {
+  it('print is the circle inscribed', () => {
+    jest.spyOn(console, 'log');
+    inscribedCircle(5, 7);
+    expect(console.log).toBeCalledWith('Круг поместится в квадрат');
+    inscribedCircle(3, 3);
+    expect(console.log).toBeCalledWith('Круг не поместится в квадрат');
+    inscribedCircle(25, 21);
+    expect(console.log).toBeCalledWith('Круг не поместится в квадрат');
   });
 });

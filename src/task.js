@@ -11,8 +11,8 @@
 /**
  * Product and sum of numbers
  * @function
- * @param {number} a
- * @param {number} b
+ * @param {number} a - the first number
+ * @param {number} b - the second number
  * @returns {void}
  */
 export function sum(a, b) {
@@ -25,8 +25,8 @@ export function multiplication(a, b) {
 /**
  * Total number of characters
  * @function
- * @param {string} str1
- * @param {string} str2
+ * @param {string} str1 - the first word
+ * @param {string} str2 - the second word
  * @returns {void}
  */
 
@@ -126,5 +126,24 @@ export function nameMonth() {
     case 12:
       console.log('Декабрь');
       break;
+  }
+}
+
+/**
+ * A function that determines whether a circle will fit into a square
+ * @function
+ * @param {number} circle - circle area
+ * @param {number} square - square area
+ * @returns {void}
+ */
+
+export function inscribedCircle(circle, square) {
+  const diameterCircle = Math.sqrt(circle / Math.PI) * 2;
+  const sideSquare = Math.sqrt(square);
+
+  if (sideSquare >= diameterCircle) {
+    console.log('Круг поместится в квадрат');
+  } else {
+    console.log('Круг не поместится в квадрат');
   }
 }

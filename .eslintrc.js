@@ -31,5 +31,8 @@ module.exports = {
     ],
     'import/prefer-default-export': 'off',
     'no-console': 'off',
+    'no-alert': 'off',
+    'default-case': 'off',
+    'no-unused-expressions': 'off',
   },
 };
