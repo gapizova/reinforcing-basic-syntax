@@ -280,9 +280,7 @@ export function destructObj(obj) {
  * @returns {void}
  */
 export function sumArray(arr) {
-  console.log(
-    arr.reduce((acc, el) => acc + el, 0),
-  );
+  console.log(arr.reduce((acc, el) => acc + el, 0));
 }
 
 /**
@@ -311,4 +309,50 @@ export function maxAndMinArray(arr) {
   console.log(
     `Наименьший элемент в массиве: ${minElement}. Наибольший элемент в массиве: ${maxElement}`,
   );
+}
+
+/* 1. Напишите функцию diff, которая получает в качестве
+параметров 2 числа и возвращает разницу между
+наибольшим и наименьшим.
+2. Напишите функцию isWord, которая принимает на
+вход текстовую строку. Функция возвращает true, если
+строка состоит из одного слова и false, если из
+нескольких.
+3. *Напишите функцию pow(a, x), которая вернёт
+значение числа a, возведённого в степень x. */
+
+/**
+ * The difference between the largest and the smallest
+ * @param a {number}
+ * @param b {number}
+ * @returns {number}
+ */
+export function diff(a, b) {
+  const min = Math.min(a, b);
+  const max = Math.max(a, b);
+  return max - min;
+}
+
+/**
+ * The function returns true if the string consists of one word and false if it consists of several
+ * @param str {string}
+ * @returns {boolean}
+ */
+export function isWord(str) {
+  const strArr = str.split(' ');
+  return strArr.length === 1;
+}
+
+/**
+ * Exponentiation of a number
+ * @param a {number} - The number to be raised to a power
+ * @param x {number} - Degree of number
+ * @returns {number}
+ */
+export function pow(a, x) {
+  let powA = 1;
+  for (let i = 0; i < x; i++) {
+    powA *= a;
+  }
+  return powA;
 }

@@ -15,6 +15,9 @@ import {
   sumArray,
   doubleArray,
   maxAndMinArray,
+  diff,
+  isWord,
+  pow,
 } from './task';
 
 describe('testing function sum', () => {
@@ -214,6 +217,30 @@ describe('testing function arithmeticMeanOdd', () => {
       expect(console.log).toBeCalledWith(
         'Наименьший элемент в массиве: 1. Наибольший элемент в массиве: 88',
       );
+    });
+  });
+
+  describe('testing function diff', () => {
+    it('should returns the difference between the largest and the smallest', () => {
+      expect(diff(3, 2)).toBe(1);
+      expect(diff(9, 20)).toBe(11);
+      expect(diff(0, 2)).toBe(2);
+    });
+  });
+
+  describe('testing function isWord', () => {
+    it('should returns true if the string consists of one word', () => {
+      expect(isWord('Hello world')).toBe(false);
+      expect(isWord('Javascript')).toBe(true);
+      expect(isWord('')).toBe(true);
+    });
+  });
+
+  describe('testing function pow', () => {
+    it('should returns a number raised to a power', () => {
+      expect(pow(10, 2)).toBe(100);
+      expect(pow(2, 0)).toBe(1);
+      expect(pow(2, 9)).toBe(512);
     });
   });
 });

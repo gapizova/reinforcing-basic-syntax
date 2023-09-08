@@ -28,6 +28,9 @@ module.exports = {
       {
         ignoreComments: true,
       },
+      {
+        code: 100,
+      },
     ],
     'import/prefer-default-export': 'off',
     'no-console': 'off',
