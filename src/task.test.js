@@ -12,6 +12,9 @@ import {
   setAge,
   newUserAdmin,
   destructObj,
+  sumArray,
+  doubleArray,
+  maxAndMinArray,
 } from './task';
 
 describe('testing function sum', () => {
@@ -169,6 +172,7 @@ describe('testing function arithmeticMeanOdd', () => {
     beforeEach(() => {
       user = { name: 'John' };
     });
+
     it('should add the age field to the object', () => {
       jest.spyOn(window, 'prompt').mockReturnValueOnce('25');
       setAge(user);
@@ -184,6 +188,32 @@ describe('testing function arithmeticMeanOdd', () => {
     it('should destructuring an object', () => {
       const result = destructObj(user);
       expect(result.name).toEqual('John');
+    });
+  });
+
+  describe('testing array mutation', () => {
+    let arr;
+    beforeEach(() => {
+      arr = [1, 2, 3, 40, 30, 20, 6, 9, 11, 88];
+      jest.spyOn(console, 'log');
+    });
+
+    it('should print sum of all the elements of the array', () => {
+      sumArray(arr);
+      expect(console.log).toBeCalledWith(210);
+    });
+
+    it('should returns new array with double each element of the source array', () => {
+      const newArr = doubleArray(arr);
+      expect(arr).not.toBe(newArr);
+      expect(newArr).toEqual([2, 4, 6, 80, 60, 40, 12, 18, 22, 176]);
+    });
+
+    it('should print the largest and smallest elements of the original array', () => {
+      maxAndMinArray(arr);
+      expect(console.log).toBeCalledWith(
+        'Наименьший элемент в массиве: 1. Наибольший элемент в массиве: 88',
+      );
     });
   });
 });

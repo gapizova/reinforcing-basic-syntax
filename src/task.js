@@ -244,7 +244,7 @@ export function setAge(obj) {
  * @returns {Object}
  */
 export function newUserAdmin(obj) {
-  return { ...obj, role: 'admin'};
+  return { ...obj, role: 'admin' };
 }
 
 /**
@@ -262,4 +262,53 @@ export function newUserAdmin(obj) {
 export function destructObj(obj) {
   const { ...variables } = obj;
   return variables;
+}
+
+/* Создайте массив целых чисел из 10 элементов.
+1. Выведите в консоль сумму всех элементов массива.
+2. Создайте новый массив на основе исходного, в
+котором каждый элемент будет вдвое больше
+элемента исходного массива с таким же индексом.
+(a[1] = 3, b[1] = 6, где a — исходный массив, b — новый
+массив).
+3. *Найдите и выведите в консоль наибольший и
+наименьший элементы исходного массива. */
+
+/**
+ * The sum of all the elements of the array
+ * @param arr {Array} - Source array
+ * @returns {void}
+ */
+export function sumArray(arr) {
+  console.log(
+    arr.reduce((acc, el) => acc + el, 0),
+  );
+}
+
+/**
+ * Double each element of the array
+ * @param arr {Array} - Source array
+ * @returns {Array} - New array
+ */
+export function doubleArray(arr) {
+  return arr.map((num) => num * 2);
+}
+
+/**
+ * The largest and smallest elements of the original array
+ * @param arr {Array} - Source array
+ * @returns {void}
+ */
+export function maxAndMinArray(arr) {
+  let minElement = Infinity;
+  arr.forEach((el) => {
+    if (el < minElement) {
+      minElement = el;
+    }
+  });
+
+  const maxElement = Math.max.apply(null, arr);
+  console.log(
+    `Наименьший элемент в массиве: ${minElement}. Наибольший элемент в массиве: ${maxElement}`,
+  );
 }
