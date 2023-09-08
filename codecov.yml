@@ -6,4 +6,8 @@ coverage:
         threshold: 0.03%
         base: auto
 comment:
-  layout: "newheader, diff, files, newfooter"
+  layout: ' diff, flags, files'
+  behavior: default
+  require_changes: false # if true: only post the comment if coverage changes
+  require_base: false # [true :: must have a base report to post]
+  require_head: true # [true :: must have a head report to post]
