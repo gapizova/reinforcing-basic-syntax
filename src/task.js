@@ -356,3 +356,80 @@ export function pow(a, x) {
   }
   return powA;
 }
+
+/* 1. Запросите у пользователя дату в формате
+ДД.ММ.ГГГГ. Напишите программу, выводящую день
+недели по введённой дате.
+2. Написать программу, которая выводит в консоль
+количество минут, прошедшее с начала сегодняшнего
+дня.
+3. *В двух переменных хранятся даты рождения двух
+пользователей в формате ДД.ММ.ГГГГ. Написать
+программу, которая определяет более молодого
+пользователя. */
+
+/**
+ * Print the day of the week of the entered date
+ * @returns {void}
+ */
+export function getDayOfWeek() {
+  const dateString = prompt('Введите дату в формате ДД.ММ.ГГГГ');
+
+  const dateParts = dateString.split('.');
+  const day = parseInt(dateParts[0], 10);
+  const month = parseInt(dateParts[1], 10) - 1;
+  const year = parseInt(dateParts[2], 10);
+
+  const date = new Date(year, month, day);
+
+  const dayOfWeek = date.getDay();
+
+  const daysOfWeek = [
+    'Воскресенье',
+    'Понедельник',
+    'Вторник',
+    'Среда',
+    'Четверг',
+    'Пятница',
+    'Суббота',
+  ];
+
+  console.log(`День недели: ${daysOfWeek[dayOfWeek]}`);
+}
+
+/**
+ * Print the number of minutes that have passed since the beginning of today
+ * @returns {void}
+ */
+export function getMinutsToday() {
+  const today = new Date();
+
+  const hours = today.getHours();
+  const minutes = today.getMinutes();
+  const sec = today.getSeconds();
+
+  console.log((hours * 60 + minutes + sec / 60).toFixed(0));
+}
+
+/**
+ * Identify a younger user
+ * @returns {void}
+ */
+export function whoIsYounger() {
+  const user1 = prompt('Введите дату рождения первого пользователя ДД.ММ.ГГГГ');
+  const user2 = prompt('Введите дату рождения второго пользователя ДД.ММ.ГГГГ');
+
+  const [day1, month1, year1] = user1.split('.');
+  const [day2, month2, year2] = user2.split('.');
+
+  const dayOfBirth1 = new Date(`${year1}-${month1}-${day1}`);
+  const dayOfBirth2 = new Date(`${year2}-${month2}-${day2}`);
+
+  if (Number(dayOfBirth1) < Number(dayOfBirth2)) {
+    console.log('Первый пользователь моложе');
+  } else if (Number(dayOfBirth1) > Number(dayOfBirth2)) {
+    console.log('Второй пользователь моложе');
+  } else {
+    console.log('Возраст пользователей одинаковый');
+  }
+}

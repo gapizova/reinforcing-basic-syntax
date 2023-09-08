@@ -18,6 +18,9 @@ import {
   diff,
   isWord,
   pow,
+  getDayOfWeek,
+  getMinutsToday,
+  whoIsYounger,
 } from './task';
 
 describe('testing function sum', () => {
@@ -169,78 +172,191 @@ describe('testing function arithmeticMeanOdd', () => {
       'Среднее арифметическое всех нечётных чисел от 1 до -20: NaN',
     );
   });
+});
 
-  describe('testing object mutation', () => {
-    let user;
-    beforeEach(() => {
-      user = { name: 'John' };
-    });
-
-    it('should add the age field to the object', () => {
-      jest.spyOn(window, 'prompt').mockReturnValueOnce('25');
-      setAge(user);
-      expect(user.age).toBe(25);
-    });
-
-    it('should create a copy of the object with the role field', () => {
-      const admin = newUserAdmin(user);
-      expect(admin.name).toBe('John');
-      expect(admin.role).toBe('admin');
-    });
-
-    it('should destructuring an object', () => {
-      const result = destructObj(user);
-      expect(result.name).toEqual('John');
-    });
+describe('testing object mutation', () => {
+  let user;
+  beforeEach(() => {
+    user = { name: 'John' };
   });
 
-  describe('testing array mutation', () => {
-    let arr;
-    beforeEach(() => {
-      arr = [1, 2, 3, 40, 30, 20, 6, 9, 11, 88];
-      jest.spyOn(console, 'log');
-    });
-
-    it('should print sum of all the elements of the array', () => {
-      sumArray(arr);
-      expect(console.log).toBeCalledWith(210);
-    });
-
-    it('should returns new array with double each element of the source array', () => {
-      const newArr = doubleArray(arr);
-      expect(arr).not.toBe(newArr);
-      expect(newArr).toEqual([2, 4, 6, 80, 60, 40, 12, 18, 22, 176]);
-    });
-
-    it('should print the largest and smallest elements of the original array', () => {
-      maxAndMinArray(arr);
-      expect(console.log).toBeCalledWith(
-        'Наименьший элемент в массиве: 1. Наибольший элемент в массиве: 88',
-      );
-    });
+  it('should add the age field to the object', () => {
+    jest.spyOn(window, 'prompt').mockReturnValueOnce('25');
+    setAge(user);
+    expect(user.age).toBe(25);
   });
 
-  describe('testing function diff', () => {
-    it('should returns the difference between the largest and the smallest', () => {
-      expect(diff(3, 2)).toBe(1);
-      expect(diff(9, 20)).toBe(11);
-      expect(diff(0, 2)).toBe(2);
-    });
+  it('should create a copy of the object with the role field', () => {
+    const admin = newUserAdmin(user);
+    expect(admin.name).toBe('John');
+    expect(admin.role).toBe('admin');
   });
 
-  describe('testing function isWord', () => {
-    it('should returns true if the string consists of one word', () => {
-      expect(isWord('Hello world')).toBe(false);
-      expect(isWord('Javascript')).toBe(true);
-      expect(isWord('')).toBe(true);
-    });
+  it('should destructuring an object', () => {
+    const result = destructObj(user);
+    expect(result.name).toEqual('John');
+  });
+});
+
+describe('testing array mutation', () => {
+  let arr;
+  beforeEach(() => {
+    arr = [1, 2, 3, 40, 30, 20, 6, 9, 11, 88];
+    jest.spyOn(console, 'log');
   });
 
-  describe('testing function pow', () => {
-    it('should returns a number raised to a power', () => {
-      expect(pow(10, 2)).toBe(100);
-      expect(pow(2, 0)).toBe(1);
-      expect(pow(2, 9)).toBe(512);
-    });
+  it('should print sum of all the elements of the array', () => {
+    sumArray(arr);
+    expect(console.log).toBeCalledWith(210);
+  });
+
+  it('should returns new array with double each element of the source array', () => {
+    const newArr = doubleArray(arr);
+    expect(arr).not.toBe(newArr);
+    expect(newArr).toEqual([2, 4, 6, 80, 60, 40, 12, 18, 22, 176]);
+  });
+
+  it('should print the largest and smallest elements of the original array', () => {
+    maxAndMinArray(arr);
+    expect(console.log).toBeCalledWith(
+      'Наименьший элемент в массиве: 1. Наибольший элемент в массиве: 88',
+    );
+  });
+});
+
+describe('testing function diff', () => {
+  it('should returns the difference between the largest and the smallest', () => {
+    expect(diff(3, 2)).toBe(1);
+    expect(diff(9, 20)).toBe(11);
+    expect(diff(0, 2)).toBe(2);
+  });
+});
+
+describe('testing function isWord', () => {
+  it('should returns true if the string consists of one word', () => {
+    expect(isWord('Hello world')).toBe(false);
+    expect(isWord('Javascript')).toBe(true);
+    expect(isWord('')).toBe(true);
+  });
+});
+
+describe('testing function pow', () => {
+  it('should returns a number raised to a power', () => {
+    expect(pow(10, 2)).toBe(100);
+    expect(pow(2, 0)).toBe(1);
+    expect(pow(2, 9)).toBe(512);
+  });
+});
+
+describe('testing function getDayOfWeek', () => {
+  it('should print dey of week', () => {
+    const mockConsole = jest.spyOn(console, 'log');
+
+    jest.spyOn(window, 'prompt').mockReturnValueOnce('21.06.2018');
+    getDayOfWeek();
+    expect(mockConsole).toBeCalledWith('День недели: Четверг');
+    jest.spyOn(window, 'prompt').mockReturnValueOnce('24.10.2020');
+    getDayOfWeek();
+    expect(mockConsole).toBeCalledWith('День недели: Суббота');
+    jest.spyOn(window, 'prompt').mockReturnValueOnce('15.02.1988');
+    getDayOfWeek();
+    expect(mockConsole).toBeCalledWith('День недели: Понедельник');
+  });
+});
+
+describe('testing function getMinutsToday', () => {
+  let mockConsole;
+  let mockCurrentTime;
+  let mockNow;
+
+  beforeEach(() => {
+    mockConsole = jest.spyOn(console, 'log').mockImplementation(() => {});
+  });
+
+  afterEach(() => {
+    mockConsole.mockRestore();
+    mockCurrentTime.mockRestore();
+  });
+
+  it('should print 5 minutes for date = 01.09.2023 00:05:00', () => {
+    mockNow = new Date(2023, 8, 1, 0, 5, 0);
+    mockCurrentTime = jest
+      .spyOn(global, 'Date')
+      .mockImplementation(() => mockNow);
+    getMinutsToday();
+    expect(mockConsole).toHaveBeenCalledWith('5');
+  });
+
+  it('should print 720 minutes for date = 01.09.2023 12:00:00', () => {
+    mockNow = new Date(2023, 8, 1, 12, 0, 0);
+    mockCurrentTime = jest
+      .spyOn(global, 'Date')
+      .mockImplementation(() => mockNow);
+    getMinutsToday();
+    expect(mockConsole).toHaveBeenCalledWith('720');
+  });
+
+  it('should print 1350 minutes for date = 01.09.2023 22:30:00', () => {
+    mockNow = new Date(2023, 8, 1, 22, 30, 0);
+    mockCurrentTime = jest
+      .spyOn(global, 'Date')
+      .mockImplementation(() => mockNow);
+    getMinutsToday();
+    expect(mockConsole).toHaveBeenCalledWith('1350');
+  });
+});
+
+describe('testing function whoIsYounger', () => {
+  let mockConsole;
+  let mockPrompt1;
+  let mockPrompt2;
+
+  beforeEach(() => {
+    mockConsole = jest.spyOn(console, 'log');
+  });
+
+  afterEach(() => {
+    mockConsole.mockRestore();
+    mockPrompt1.mockRestore();
+    mockPrompt2.mockRestore();
+  });
+
+  it('should print user1 is younger than user2', () => {
+    mockPrompt1 = jest
+      .spyOn(window, 'prompt')
+      .mockReturnValueOnce('01.01.2023');
+    mockPrompt2 = jest
+      .spyOn(window, 'prompt')
+      .mockReturnValueOnce('02.01.2023');
+
+    whoIsYounger();
+
+    expect(mockConsole).toBeCalledWith('Первый пользователь моложе');
+  });
+
+  it('should print user2 is younger than user1', () => {
+    mockPrompt1 = jest
+      .spyOn(window, 'prompt')
+      .mockReturnValueOnce('10.01.2023');
+    mockPrompt2 = jest
+      .spyOn(window, 'prompt')
+      .mockReturnValueOnce('02.01.2023');
+
+    whoIsYounger();
+
+    expect(mockConsole).toBeCalledWith('Второй пользователь моложе');
+  });
+
+  it('should print the age is the same', () => {
+    mockPrompt1 = jest
+      .spyOn(window, 'prompt')
+      .mockReturnValueOnce('10.01.2023');
+    mockPrompt2 = jest
+      .spyOn(window, 'prompt')
+      .mockReturnValueOnce('10.01.2023');
+
+    whoIsYounger();
+
+    expect(mockConsole).toBeCalledWith('Возраст пользователей одинаковый');
   });
 });
