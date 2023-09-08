@@ -1,13 +1,10 @@
 name: PR Sanity Check
 
-on:
-  pull_request:
+on: pull_request
 
 jobs:
   lint:
-    runs-on: ubuntu-latest
-    permissions:
-      pull-requests: write
+    runs-on: ubuntu-20.04
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -16,10 +13,10 @@ jobs:
         run: |
           npm install
 
-      - name: Lint and prettier check
+      - name: Lint check
         run: |
           npm run lint
 
-      - name: Test check
+      - name: Lint check
         run: |
           npm run test
