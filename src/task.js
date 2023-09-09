@@ -433,3 +433,68 @@ export function whoIsYounger() {
     console.log('Возраст пользователей одинаковый');
   }
 }
+
+/* 1. Даны длины трёх сторон треугольника. Определить,
+  является ли треугольник прямоугольным.
+2. Пользователь вводит число R. Написать программу,
+  которая выведет в консоль длину окружности и
+площадь круга с радиусом R.
+3. *Пользователь вводит числа a, b и c. Написать
+программу, выводящую корни квадратного
+уравнения с коэффициентами a, b и c. */
+
+/**
+ * Determines whether the triangle is rectangular
+ * @param a {number} - Triangle cathet a
+ * @param b {number} - Triangle cathet b
+ * @param c {number} - Triangle hypotenuse c
+ * @returns {boolean} - true if the triangle is rectangular, else returns false
+ */
+export function isRightTriangle(a, b, c) {
+  return c**2 === a**2 + b**2;
+}
+
+/**
+ * Print the circumference and the area of the circle with radius R
+ * @returns {void}
+ */
+export function printAreaAndCircumference() {
+  let r = prompt('Введите радиус окружности: ');
+  r = Number(r);
+
+  const c = 2 * Math.PI * r;
+
+  const s = Math.PI * r**2;
+
+  console.log(
+    `Длина окружности с радиусом ${r} равна ${Math.round(
+      c,
+    )}. Площадь круга с радиусом ${r} - ${Math.round(s)}`,
+  );
+}
+
+/**
+ * Calculates the roots of the quadratic equation and print them
+ * @returns {void}
+ */
+export function solveQuadraticEquation() {
+  const input = prompt(
+    'Введите коэффициенты уравнения - a, b, c - через пробел: ',
+  );
+
+  const [a, b, c] = input.split(' ');
+
+  const d = b**2 - 4 * a * c;
+
+  if (d < 0) {
+    console.log('Корней нет');
+  } else if (d === 0) {
+    const x = -b / (2 * a);
+    console.log(`x = ${x}`);
+  } else {
+    const x1 = (-b + Math.sqrt(d)) / (2 * a);
+    const x2 = (-b - Math.sqrt(d)) / (2 * a);
+
+    console.log(`x1 = ${x1}, x2 = ${x2}`);
+  }
+}

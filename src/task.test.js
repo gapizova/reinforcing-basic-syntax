@@ -21,6 +21,9 @@ import {
   getDayOfWeek,
   getMinutsToday,
   whoIsYounger,
+  isRightTriangle,
+  printAreaAndCircumference,
+  solveQuadraticEquation,
 } from './task';
 
 describe('testing function sum', () => {
@@ -358,5 +361,71 @@ describe('testing function whoIsYounger', () => {
     whoIsYounger();
 
     expect(mockConsole).toBeCalledWith('Возраст пользователей одинаковый');
+  });
+});
+
+describe('testing function isRightTriangle', () => {
+  it('should returns true if a = 2.1, b = 2.8, c = 3.5', () => {
+    expect(isRightTriangle(2.1, 2.8, 3.5)).toBe(true);
+  });
+
+  it('should returns false if a = 1, b = 1, c = 1', () => {
+    expect(isRightTriangle(1, 1, 1)).toBe(false);
+  });
+});
+
+describe('testing function printAreaAndCircumference', () => {
+  let mockConsole;
+  beforeEach(() => {
+    mockConsole = jest.spyOn(console, 'log');
+  });
+
+  afterEach(() => {
+    mockConsole.mockRestore();
+  });
+
+  it('should print area = 28, circumference = 19 if radius = 3', () => {
+    jest.spyOn(window, 'prompt').mockReturnValueOnce('3');
+    printAreaAndCircumference();
+    expect(mockConsole).toBeCalledWith(
+      'Длина окружности с радиусом 3 равна 19. Площадь круга с радиусом 3 - 28',
+    );
+  });
+
+  it('should print area = 1257, circumference = 126 if radius = 20', () => {
+    jest.spyOn(window, 'prompt').mockReturnValueOnce('20');
+    printAreaAndCircumference();
+    expect(mockConsole).toBeCalledWith(
+      'Длина окружности с радиусом 20 равна 126. Площадь круга с радиусом 20 - 1257',
+    );
+  });
+});
+
+describe('testing function solveQuadraticEquation', () => {
+  let mockConsole;
+  beforeEach(() => {
+    mockConsole = jest.spyOn(console, 'log');
+  });
+
+  afterEach(() => {
+    mockConsole.mockRestore();
+  });
+
+  it('should print x1 = 3, x2 = -1 if a = 1, b = -2, c = -3', () => {
+    jest.spyOn(window, 'prompt').mockReturnValueOnce('1 -2 -3');
+    solveQuadraticEquation();
+    expect(mockConsole).toBeCalledWith('x1 = 3, x2 = -1');
+  });
+
+  it('should print x = -6 if a = 1, b = 12, c = 36', () => {
+    jest.spyOn(window, 'prompt').mockReturnValueOnce('1 12 36');
+    solveQuadraticEquation();
+    expect(mockConsole).toBeCalledWith('x = -6');
+  });
+
+  it('should print there are no roots if a = 1, b = 5, c = 10', () => {
+    jest.spyOn(window, 'prompt').mockReturnValueOnce('1 5 10');
+    solveQuadraticEquation();
+    expect(mockConsole).toBeCalledWith('Корней нет');
   });
 });
