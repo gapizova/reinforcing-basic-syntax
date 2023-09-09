@@ -40,5 +40,6 @@ module.exports = {
     'no-plusplus': 'off',
     'no-shadow': 'off',
     'no-param-reassign': 'off',
+    'no-useless-escape': 'off',
   },
 };

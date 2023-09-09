@@ -24,6 +24,7 @@ import {
   isRightTriangle,
   printAreaAndCircumference,
   solveQuadraticEquation,
+  validator,
 } from './task';
 
 describe('testing function sum', () => {
@@ -427,5 +428,41 @@ describe('testing function solveQuadraticEquation', () => {
     jest.spyOn(window, 'prompt').mockReturnValueOnce('1 5 10');
     solveQuadraticEquation();
     expect(mockConsole).toBeCalledWith('Корней нет');
+  });
+});
+
+describe('testing function validator', () => {
+  let mockConsole;
+  beforeEach(() => {
+    mockConsole = jest.spyOn(console, 'log');
+  });
+
+  afterEach(() => {
+    mockConsole.mockRestore();
+  });
+
+  it('should print phone number if str = 8(999)444-55-22', () => {
+    validator('8(999)444-55-22');
+    expect(mockConsole).toBeCalledWith('Это номер телефона');
+  });
+
+  it('should print phone number if str = 89994445522', () => {
+    validator('89994445522');
+    expect(mockConsole).toBeCalledWith('Это номер телефона');
+  });
+
+  it('should print email if str = abc@mail.ru', () => {
+    validator('abc@mail.ru');
+    expect(mockConsole).toBeCalledWith('Это адрес электронной почты');
+  });
+
+  it('should print date if str = 01.01.2023', () => {
+    validator('01.01.2023');
+    expect(mockConsole).toBeCalledWith('Это дата');
+  });
+
+  it('should print no matches if str = hello', () => {
+    validator('hello');
+    expect(mockConsole).toBeCalledWith('Нет совпадений');
   });
 });

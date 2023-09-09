@@ -451,7 +451,7 @@ export function whoIsYounger() {
  * @returns {boolean} - true if the triangle is rectangular, else returns false
  */
 export function isRightTriangle(a, b, c) {
-  return c**2 === a**2 + b**2;
+  return c ** 2 === a ** 2 + b ** 2;
 }
 
 /**
@@ -464,7 +464,7 @@ export function printAreaAndCircumference() {
 
   const c = 2 * Math.PI * r;
 
-  const s = Math.PI * r**2;
+  const s = Math.PI * r ** 2;
 
   console.log(
     `Длина окружности с радиусом ${r} равна ${Math.round(
@@ -484,7 +484,7 @@ export function solveQuadraticEquation() {
 
   const [a, b, c] = input.split(' ');
 
-  const d = b**2 - 4 * a * c;
+  const d = b ** 2 - 4 * a * c;
 
   if (d < 0) {
     console.log('Корней нет');
@@ -496,5 +496,34 @@ export function solveQuadraticEquation() {
     const x2 = (-b - Math.sqrt(d)) / (2 * a);
 
     console.log(`x1 = ${x1}, x2 = ${x2}`);
+  }
+}
+
+/* Пользователь вводит текстовую строку. Определить с
+помощью регулярного выражения, является ли
+введённая строка:
+1. Датой.
+2. Адресом электронной почты.
+3. *Номером телефона. */
+
+/**
+ * Determines that the string is date, phone number or email
+ * @param str {string}
+ * @returns {void}
+ */
+export function validator(str) {
+  const regexPhoneNumber = /^[\d\\+][\d\(\)\ -]{4,14}\d$/;
+  const regexEmail = /^[\w]{1}[\w-\\.]*@[\w-]+\.[a-z]{2,4}$/i;
+  const regexDate =
+    /(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.][0-9]{4}/;
+
+  if (regexPhoneNumber.test(str)) {
+    console.log('Это номер телефона');
+  } else if (regexEmail.test(str)) {
+    console.log('Это адрес электронной почты');
+  } else if (regexDate.test(str)) {
+    console.log('Это дата');
+  } else {
+    console.log('Нет совпадений');
   }
 }
