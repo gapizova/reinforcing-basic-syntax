@@ -1,7 +1,7 @@
-import { runApp } from './runApp';
+import { runApp } from './runApp.js';
 
-runApp(
-  document.querySelector('.input'),
-  document.querySelector('.button'),
-  document.querySelector('.texts-all'),
-);
+const input = document.querySelector('.input');
+const button = document.querySelector('.button');
+const texts = document.querySelector('.texts-all');
+
+runApp(input, button, texts);

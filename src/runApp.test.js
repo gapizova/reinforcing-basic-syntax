@@ -1,4 +1,4 @@
-import { runApp } from './runApp';
+import { runApp } from './runApp.js';
 
 const input = document.createElement('input');
 const button = document.createElement('button');

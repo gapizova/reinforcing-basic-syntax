@@ -41,5 +41,6 @@ module.exports = {
     'no-shadow': 'off',
     'no-param-reassign': 'off',
     'no-useless-escape': 'off',
+    'import/extensions': ['error', 'never', { js: 'always' }],
   },
 };

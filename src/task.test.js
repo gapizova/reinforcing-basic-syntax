@@ -25,7 +25,7 @@ import {
   printAreaAndCircumference,
   solveQuadraticEquation,
   validator,
-} from './task';
+} from './task.js';
 
 describe('testing function sum', () => {
   it('should adding numbers', () => {
