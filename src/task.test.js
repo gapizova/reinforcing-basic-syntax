@@ -241,6 +241,7 @@ describe('testing function isWord', () => {
     expect(isWord('Hello world')).toBe(false);
     expect(isWord('Javascript')).toBe(true);
     expect(isWord('')).toBe(true);
+    expect(isWord(' hello ')).toBe(true);
   });
 });
 
@@ -372,6 +373,10 @@ describe('testing function isRightTriangle', () => {
 
   it('should returns false if a = 1, b = 1, c = 1', () => {
     expect(isRightTriangle(1, 1, 1)).toBe(false);
+  });
+
+  it('should returns true if a = 3.5, b = 2.1, c = 2.8', () => {
+    expect(isRightTriangle(3.5, 2.1, 2.8)).toBe(true);
   });
 });
 

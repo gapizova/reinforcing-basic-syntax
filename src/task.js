@@ -167,9 +167,9 @@ export function inscribedCircle(circle, square) {
  */
 
 export function sumNumbers() {
-  let add = 0;
+  let add = 50;
 
-  for (let i = 50; i <= 100; i++) {
+  for (let i = 51; i <= 100; i++) {
     add += i;
   }
 
@@ -328,9 +328,7 @@ export function maxAndMinArray(arr) {
  * @returns {number}
  */
 export function diff(a, b) {
-  const min = Math.min(a, b);
-  const max = Math.max(a, b);
-  return max - min;
+  return Math.abs(a - b);
 }
 
 /**
@@ -339,7 +337,7 @@ export function diff(a, b) {
  * @returns {boolean}
  */
 export function isWord(str) {
-  const strArr = str.split(' ');
+  const strArr = str.trim().split(' ');
   return strArr.length === 1;
 }
 
@@ -451,7 +449,9 @@ export function whoIsYounger() {
  * @returns {boolean} - true if the triangle is rectangular, else returns false
  */
 export function isRightTriangle(a, b, c) {
-  return c ** 2 === a ** 2 + b ** 2;
+  const sides = [a, b, c];
+  sides.sort((num1, num2) => num1 - num2);
+  return sides[2] ** 2 === sides[0] ** 2 + sides[1] ** 2;
 }
 
 /**
