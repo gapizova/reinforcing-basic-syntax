@@ -28,8 +28,19 @@ module.exports = {
       {
         ignoreComments: true,
       },
+      {
+        code: 100,
+      },
     ],
     'import/prefer-default-export': 'off',
     'no-console': 'off',
+    'no-alert': 'off',
+    'default-case': 'off',
+    'no-unused-expressions': 'off',
+    'no-plusplus': 'off',
+    'no-shadow': 'off',
+    'no-param-reassign': 'off',
+    'no-useless-escape': 'off',
+    'import/extensions': ['error', 'never', { js: 'always' }],
   },
 };
